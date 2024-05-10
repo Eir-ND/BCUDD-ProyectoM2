@@ -1,4 +1,5 @@
 const encuestas = [];
+const respuestasUsuario = [];
 
 function crearEncuesta() {
     const encuesta = [];
@@ -37,16 +38,34 @@ function mostrarEncuestas() {
     } else {
         alert('Selección inválida.');
     }
+    return encuestaAVotar - 1;
 }
 
-// function votarEncuesta() {
-//     mostrarEncuestas();
+function votarEncuesta() {
+    const index = mostrarEncuestas();
+    let encuesta = encuestas[index]
+    const respuestas =[];
+    encuesta.slice(1).forEach((pregunta) => {
+        const respuesta = parseInt(prompt(`
+        Selecciona una opción:
+        ${pregunta.pregunta} 
+        1. ${pregunta.opciones[0]}
+        2. ${pregunta.opciones[1]}
+        3. ${pregunta.opciones[2]}
+        `));
+        
+        if (respuesta >= 1 && respuesta <= 3) { // Verificar que la respuesta esté en el rango correcto
+            respuestas.push(respuesta);
+        } else {
+            alert('Respuesta inválida, se omitirá esta pregunta.');
+            respuestas.push(0);
+        }
 
-// }
+    });
 
-// encuestas.forEach((encuesta,indice) => {
-//     prompt(`Encuesta N° ${indice + 1}: ${encuesta[0]}`)
-// });
+    respuestasUsuario.push(respuestas);
+    console.log(respuestasUsuario);
+}
 
 
 // Menú de interfaz
