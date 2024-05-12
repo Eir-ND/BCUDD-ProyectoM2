@@ -6,41 +6,27 @@ function crearEncuesta() {
     const temaEncuesta = prompt("Ingresa el tema central de la encuesta: ");
     encuesta.push(temaEncuesta);
     for (let i = 1; i < 9; i++) {
-        const enunciado = prompt("Ingresa una pregunta: ");
-        const alternativas = prompt("Ingrese las opciones separadas por coma ( , )").split(",");
-        const nuevaPregunta = {
-        pregunta: enunciado,
-        opciones: alternativas,
-        };
+        const enunciado = prompt(`Ingresa la pregunta N° ${i}: `);
+        const alternativas = prompt("Ingrese 3 opciones separadas por coma ( , )").split(",");
+        if (alternativas.length === 3) {
+            const nuevaPregunta = {
+            pregunta: enunciado,
+            opciones: alternativas,
+            };
 
         encuesta.push(nuevaPregunta);
-    }
-
-    encuestas.push(encuesta);
-    respuestasUsuario.push([]);
-    console.log("Se ha creado la encuesta satisfactoriamente.")
-    alert("Se ha creado la encuesta satisfactoriamente.")
-}
-
-
-function mostrarEncuestas() {
-    let opcionesEncuestas = '';
-    for (let i = 0; i < encuestas.length; i++) {
-        opcionesEncuestas += `\n ${i + 1} - ${encuestas[i][0]} \n`;
-        }
-
-    const encuestaAVotar = parseInt(prompt(`
-    Lista de encuestas disponibles:
-    ${opcionesEncuestas}
-    Seleccione el número de la encuesta:
-    `));
-        
-    if (encuestaAVotar >= 1 && encuestaAVotar <= encuestas.length) {
-        alert(`Ha seleccionado la encuesta de tema "${encuestas[encuestaAVotar - 1][0]}".`);
         } else {
-        alert('Selección inválida.');
+            alert("Cantidad de opciones inválida, intente nuevamente.");
+            break
         }
-    return encuestaAVotar - 1;
+    };
+    if (encuesta.length === 9) {
+        encuestas.push(encuesta);
+        respuestasUsuario.push([]);
+        console.log("Se ha creado la encuesta satisfactoriamente.")
+        console.log(encuestas)
+        alert("Se ha creado la encuesta satisfactoriamente.")
+    };
 }
 
 function votarEncuesta() {
@@ -82,6 +68,7 @@ function votarEncuesta() {
     });
 
     respuestasUsuario[index].push(respuestas);
+    console.log("Ha votado la encuesta seleccionada.")
     console.log(respuestasUsuario);
 } 
 
@@ -115,6 +102,26 @@ function mostrarResultados() {
         Total de respuestas: ${totalRespuestas}
         `);
     }
+}
+
+function mostrarEncuestas() {
+    let opcionesEncuestas = '';
+    for (let i = 0; i < encuestas.length; i++) {
+        opcionesEncuestas += `\n ${i + 1} - ${encuestas[i][0]} \n`;
+        }
+
+    const encuestaAVotar = parseInt(prompt(`
+    Lista de encuestas disponibles:
+    ${opcionesEncuestas}
+    Seleccione el número de la encuesta:
+    `));
+        
+    if (encuestaAVotar >= 1 && encuestaAVotar <= encuestas.length) {
+        alert(`Ha seleccionado la encuesta de tema "${encuestas[encuestaAVotar - 1][0]}".`);
+        } else {
+        alert('Selección inválida.');
+        }
+    return encuestaAVotar - 1;
 }
 
 // Menú de interfaz
