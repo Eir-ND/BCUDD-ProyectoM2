@@ -101,8 +101,8 @@ function mostrarResultados() {
         
         Total de respuestas: ${totalRespuestas}
         `);
-    }
-}
+    };
+};
 
 function mostrarEncuestas() {
     let opcionesEncuestas = '';
@@ -122,25 +122,4 @@ function mostrarEncuestas() {
         alert('Selección inválida.');
         }
     return encuestaAVotar - 1;
-}
-
-// Menú de interfaz
-// const opcion = parseInt(prompt(`
-//     Seleccionar una opción:
-//     1. Crear encuesta
-//     2. Votar encuesta
-//     3. Resultados
-// `));
-// switch (opcion) {
-//     case 1:
-//         crearEncuesta();
-//         break
-//     case 2:
-//         votarEncuesta();
-//         break
-//     case 3:
-//         mostrarResultados();
-//         break
-//     default:
-//         alert("Opción inválida");
-// }
+};
