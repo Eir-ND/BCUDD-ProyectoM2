@@ -7,7 +7,7 @@ Se realiza la solución con PF y el script debe ser ejecutado desde la consola c
 
 La estructura de la variable `respuestasUsuario` en la cual se almacenan los datos es la siguiente:
 
-```
+```scss
 // Cada encuesta creada a su vez crea un array en la variable respuestasUsuario.
 respuestasUsuario = [[encuesta1], [encuesta2], [encuesta3], ...[encuestan]]
 
